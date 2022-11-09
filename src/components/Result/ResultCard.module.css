@@ -1,0 +1,20 @@
+.card{
+    font-family: 'Courier New', Courier, monospace;
+    width: 60%;
+    height: 80%;
+    background-color: white;
+    border-width:2px;
+    border-color:yellow;
+    border-radius: 9%;
+    margin: 5%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.code{
+    color:black;
+    font-size: 2em;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}

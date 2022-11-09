@@ -1,0 +1,21 @@
+
+
+
+.input{
+    width:24px;
+    height: 24px;
+    border-radius: 10%;
+    border-width: 0.15mm;
+    font-size: 20px;
+    margin:5px;
+}
+
+.input.disable{
+    pointer-events:none;
+}
+.errorPar{
+    padding:3px;
+    color:rgb(239, 30, 30);
+    font-size: 16px;
+}
+

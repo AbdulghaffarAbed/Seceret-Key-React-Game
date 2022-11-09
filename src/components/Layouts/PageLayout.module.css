@@ -1,0 +1,9 @@
+.pageBody{
+    margin-top: 5rem;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    height:100%;
+}

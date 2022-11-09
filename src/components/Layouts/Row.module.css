@@ -1,0 +1,18 @@
+.row{
+    width:100%;
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin: 2%;
+}
+
+.inputFields{
+    margin-left: 8%;
+}
+
+
+.circles{
+    margin-right: 8%;
+    background-color: rgb(150, 224, 186);
+}

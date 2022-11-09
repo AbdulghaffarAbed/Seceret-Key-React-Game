@@ -1,0 +1,18 @@
+.startBox{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width:40%;
+    height: 500px;
+    
+}
+.startButton{
+    margin: 5%;
+    background-color: greenyellow;
+}
+
+.startButton:hover{
+    background-color: rgb(152, 232, 32);
+    border-color: aqua;
+}
