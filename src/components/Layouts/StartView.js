@@ -15,7 +15,6 @@ const StartView = (props) => {
   const enableRowCount = useSelector((state) => state.rowSlice.enableRow);
   const gameStatus = useSelector((state) => state.startSlice.endGame);
   const gameResult = useSelector((state) => state.startSlice.result);
-  const circleColorSelector = useSelector((state) => state.circlesSlice.row0);
   const dispatch = useDispatch();
 
   /**

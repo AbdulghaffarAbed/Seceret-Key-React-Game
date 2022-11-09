@@ -20,7 +20,6 @@ const colorValue = (value) => {
 
 const Row = (props) => {
   const [check, setCheck] = useState(false); // Used to start compare key digits when check button clicked
-  const [displayCircle, setDisplayCircle] = useState(false); // used to display and hide row circles
 
   const dispatch = useDispatch();
 
@@ -35,7 +34,6 @@ const Row = (props) => {
    */
   useEffect(() => {
     setCheck(false);
-    setDisplayCircle(false);
   }, []);
   // Split secret key to single digits
   const randomKey = useSelector((state) => state.secretKey.key);
@@ -92,7 +90,6 @@ const Row = (props) => {
       default: // Danger here....
     }
     setCheck(false);
-    setDisplayCircle(true);
     }
   };
 
@@ -148,10 +145,10 @@ const Row = (props) => {
         </Button>
       </section>
       <section className={classes.circles}>
-        {displayCircle && <Circle circleColor={circleColorSelector.c0} />}
-        {displayCircle && <Circle circleColor={circleColorSelector.c1} />}
-        {displayCircle && <Circle circleColor={circleColorSelector.c2} />}
-        {displayCircle && <Circle circleColor={circleColorSelector.c3} />}
+        <Circle circleColor={circleColorSelector.c0} />
+        <Circle circleColor={circleColorSelector.c1} />
+        <Circle circleColor={circleColorSelector.c2} />
+        <Circle circleColor={circleColorSelector.c3} />
       </section>
     </div>
   );
