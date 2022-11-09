@@ -1,8 +1,13 @@
 import { Fragment } from "react";
 import classes from "./Circle.module.css";
 
+/**
+ * Circles component used to display the circles and change their olors in css
+ * based on value passed to it from its parent which is Row component
+ */
+
+
 const Circles = (props) => {
-  // TODO: make className dynamic to color the circles depending on state
   console.log("circle:" + props.circleColor);
   return (
     <Fragment>

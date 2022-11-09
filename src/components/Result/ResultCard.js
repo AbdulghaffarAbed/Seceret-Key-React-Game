@@ -1,7 +1,11 @@
 import classes from "./ResultCard.module.css";
 
-const ResultCard = (props) => {
+/**
+ * Display result card contains the secret key and game result
+ */
 
+
+const ResultCard = (props) => {
   return (
     <div className={classes.card}>
     <h1>{props.gameResult}</h1>

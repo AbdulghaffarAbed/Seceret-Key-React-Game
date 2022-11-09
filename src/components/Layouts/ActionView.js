@@ -3,23 +3,27 @@ import classes from "./ActionView.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { enableRowAction } from "../../store";
 
+/**
+ * ActionView component used to display all rows and send some date
+ * to each one of them
+ */
+
+
 const ActionView = () => {
 
-  const enableRowCount = useSelector((state) => state.rowSlice.enableRow);
-  const gameStatus = useSelector((state)=>state.startSlice.endGame);
-
+  const enableRowCount = useSelector((state) => state.rowSlice.enableRow);    // represent row number to enable its fields and button
+  const gameStatus = useSelector((state)=>state.startSlice.endGame);          // point to the game status (end or not)
   const dispatch = useDispatch();
-  const rowNumber = "row" + (enableRowCount - 1);
-  const circleColorSelector = useSelector(
-    (state) => state.circlesSlice[rowNumber]
-  );
 
+  const rowNumber = "row" + (enableRowCount - 1);
+  const circleColorSelector = useSelector((state) => state.circlesSlice[rowNumber]);  // point to row circles color
+
+   /**
+    * Enable the next row fields and buttons if the game started and attempts not finished
+    */
+
+   
   const enableDisapleRowHandler = () => {
-    /**
-     * When user enter the correct secret key ( all circles blue)
-     * Then game end, and secret key displayed on the screen
-     */
-    console.log("Inside enableDisable func: "+ circleColorSelector.c0);
     if (!gameStatus){
       dispatch(enableRowAction.enableNextRow());
     }

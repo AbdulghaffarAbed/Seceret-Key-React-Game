@@ -8,61 +8,61 @@ import classes from "./InputField.module.css";
  */
 
 const InputField = (props) => {
-  const [outLimit, setOutLimit] = useState(false); // To check if the number in range 0 to 9 or not
-  const [fieldValue, setFieldValue] = useState();
+  const [outLimit, setOutLimit] = useState(false);                    // To check if the number in range 0 to 9 or not
+  const [fieldValue, setFieldValue] = useState();                     // To store field number value
 
-  // Split secret key to single digits
+ 
   const randomKey = useSelector((state) => state.secretKey.key);
-  const keyDigits = [...(randomKey + "")];
+  const keyDigits = [...(randomKey + "")];                           // Split secret key to single digits
+
+  /**
+   * Used to get the field value when it's changed
+   */
+
 
   const NumberLimitHndler = (event) => {
     setFieldValue(() => event.target.value);
   };
 
   useEffect(() => {
+   
     /**
-     * Check if the entered number is one digit or more
-     * if it's more than one digit then display error message
+     * If check button clicked then check if:
+     * 1. the number exist in the secret key and its position is correct the circle color must be blue
+     * 2. the number exist in the secret key but its position is incorrect the circle color must be white
+     * 3. the number does not exist in the secret key then don't display the circle
      */
 
-    if (fieldValue > 9 || fieldValue < 0) {
-      setOutLimit(true);
-    } else {
-      setOutLimit(false);
-    }
 
     if (props.checkStatus) {
-      let occeranceValue = 0;
-
-      // Same number and in the same position
+      let occeranceValue = 0;                   // used to store a number that arrow to color
       if (props.keyDigit === fieldValue) {
-        occeranceValue = 1; // blue circle
+        occeranceValue = 1;                     // blue circle
       } else {
         for (let i in keyDigits) {
           if (keyDigits[i] === fieldValue) {
-            occeranceValue = 2; // white circle
+            occeranceValue = 2;                 // white circle
           }
         }
       }
-
+      
+      // Define state that contains the row number and a number arrow to the circle color 
       const status = {
         id: props.id,
         occerance: occeranceValue,
       };
-      // console.log("INSIDE INPUT FILE id: " +status.id +"  occerance: " + status.occerance);
-      props.numValidation(status);
+
+      props.numValidation(status);    // Pass state object to Row component to complete the process
     }
   }, [fieldValue, props.checkStatus, props.keyDigit]);
-
-  /**
-   * TODO: make the error msg apperas one for multi errors in the fields
-   */
 
   return (
     <Fragment>
       {props.enableOrDisable && (
         <input
-          type="text"
+          type="number"
+          min="0"
+          max="9"
           maxLength="1"
           oninput="this.value=this.value.replace(/[^0-9]/g,'');"
           value={null}
@@ -73,7 +73,9 @@ const InputField = (props) => {
 
       {!props.enableOrDisable && (
         <input
-          type="text"
+          type="number"
+          min="0"
+          max="9"
           maxLength="1"
           oninput="this.value=this.value.replace(/[^0-9]/g,'');"
           value={null}
@@ -82,9 +84,6 @@ const InputField = (props) => {
         />
       )}
 
-      {outLimit && (
-        <p className={classes.errorPar}> Please Enter a number from 0 to 9 </p>
-      )}
     </Fragment>
   );
 };
